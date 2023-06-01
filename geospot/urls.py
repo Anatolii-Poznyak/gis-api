@@ -32,3 +32,4 @@ urlpatterns = [
         name="swagger-ui",
     ),
 ]
+

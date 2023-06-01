@@ -72,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "geospot.wsgi.application"
 
+GDAL_LIBRARY_PATH = "/usr/local/Cellar/gdal/3.6.4_4/lib/libgdal.dylib"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
