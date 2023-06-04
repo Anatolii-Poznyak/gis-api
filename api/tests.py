@@ -26,3 +26,12 @@ class PointViewSetTestCase(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data), 2)
 
+    def test_create_point(self):
+        data = {
+            "name": "Test-point-3",
+            "description": "This is test point 3",
+            "geom": "POINT (3 11)",
+        }
+        response = self.client.post(reverse("api:point-list"), data)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(Point.objects.count(), 3)
