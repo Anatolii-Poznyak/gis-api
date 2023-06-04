@@ -10,3 +10,16 @@ class PointSerializer(serializers.ModelSerializer):
     class Meta:
         model = Point
         fields = "id", "name", "description", "geom"
+
+
+class NearestPointSerializer(serializers.ModelSerializer):
+    distance = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Point
+        fields = "id", "name", "description", "geom", "distance"
+
+    @staticmethod
+    def get_distance(obj):
+        return obj.distance
+
