@@ -3,6 +3,7 @@ from rest_framework.test import APITestCase
 from api.models import Point
 from django.urls import reverse
 
+from api.nearest_point import find_nearest_point
 from api.serializers import PointSerializer
 
 
@@ -47,3 +48,13 @@ class PointSerializerTestCase(TestCase):
     def test_contains_expected_fields(self):
         data = self.serializer.data
         self.assertCountEqual(data.keys(), ["id", "name", "description", "geom"])
+
+
+class NearestPointTestCase(TestCase):
+    def setUp(self):
+        Point.objects.create(name="Test-point-1", description="This is test point 1", geom="POINT (5 23)")
+        Point.objects.create(name="Test-point-2", description="This is test point 2", geom="POINT (2 9)")
+
+    def test_find_nearest_point(self):
+        point = find_nearest_point(4, 6)
+        self.assertEqual(point.name, "Test-point-2")
