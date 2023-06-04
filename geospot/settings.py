@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     "rest_framework",
+    "drf_spectacular",
     "api",
 ]
 
@@ -75,6 +76,7 @@ WSGI_APPLICATION = "geospot.wsgi.application"
 
 GDAL_LIBRARY_PATH = "/usr/local/Cellar/gdal/3.6.4_4/lib/libgdal.dylib"
 
+# Database
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -132,3 +134,14 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Geospot API",
+    "DESCRIPTION": "Documentation for Geospot API",
+    "VERSION": "0.5",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
