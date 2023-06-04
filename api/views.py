@@ -1,10 +1,12 @@
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.request import Request
+
 from .models import Point
 from .nearest_point import find_nearest_point
 from .serializers import PointSerializer, NearestPointSerializer
-from drf_spectacular.utils import extend_schema, OpenApiParameter
-from rest_framework.decorators import action
-from rest_framework.response import Response
 
 
 class PointViewSet(viewsets.ModelViewSet):
@@ -25,11 +27,13 @@ class NearestPointViewSet(viewsets.ViewSet):
         responses=NearestPointSerializer,
     )
     @action(detail=False, methods=["get"])
-    def find(self, request):
+    def find(self, request: Request) -> Response:
         lat = request.query_params.get("lat")
         lon = request.query_params.get("lon")
         nearest_point = find_nearest_point(lat, lon)
         if isinstance(nearest_point, Response):
             return nearest_point
         serializer = NearestPointSerializer(nearest_point)
+        print(type(Response(serializer.data)))
+        print(type(request))
         return Response(serializer.data)

@@ -22,4 +22,3 @@ class NearestPointSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_distance(obj):
         return obj.distance.m
-
