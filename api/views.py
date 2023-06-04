@@ -25,7 +25,7 @@ class NearestPointViewSet(viewsets.ViewSet):
         responses=NearestPointSerializer,
     )
     @action(detail=False, methods=["get"])
-    def nearest(self, request):
+    def find(self, request):
         lat = request.query_params.get("lat")
         lon = request.query_params.get("lon")
         nearest_point = find_nearest_point(lat, lon)
