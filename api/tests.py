@@ -3,6 +3,8 @@ from rest_framework.test import APITestCase
 from api.models import Point
 from django.urls import reverse
 
+from api.serializers import PointSerializer
+
 
 class PointModelTestCase(TestCase):
     def setUp(self):
@@ -35,3 +37,13 @@ class PointViewSetTestCase(APITestCase):
         response = self.client.post(reverse("api:point-list"), data)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Point.objects.count(), 3)
+
+
+class PointSerializerTestCase(TestCase):
+    def setUp(self):
+        self.point = Point.objects.create(name="Test-point-1", description="This is test point 1", geom="POINT (5 23)")
+        self.serializer = PointSerializer(instance=self.point)
+
+    def test_contains_expected_fields(self):
+        data = self.serializer.data
+        self.assertCountEqual(data.keys(), ["id", "name", "description", "geom"])
