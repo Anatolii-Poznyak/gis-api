@@ -11,6 +11,7 @@ This project is a Django-based API that allows the creation and retrieval of geo
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 ![PostGIS](https://img.shields.io/badge/-PostGIS-336791?style=flat-square&logo=postgis&logoColor=white)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=Docker&logoColor=white)
+![Postman](https://img.shields.io/badge/-Postman-FF6C37?style=flat-square&logo=Postman&logoColor=white)
 
 ## 📝 Requirements
 
@@ -84,5 +85,13 @@ To get detailed information about endpoints, parameters and responses navigate t
 <details>
   <summary>click</summary>
   
-  ![swagger.png](swagger.png)
+  ![swagger](swagger.png)
+</details>
+
+## 📮 Postman
+If you want to test endpoints via Postman - you can import [this postman collection](gis-api collection.postman_collection.json)
+<details>
+  <summary>click</summary>
+  
+  ![postman](postman.png)
 </details>
