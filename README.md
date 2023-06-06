@@ -89,7 +89,9 @@ To get detailed information about endpoints, parameters and responses navigate t
 </details>
 
 ## 📮 Postman
-If you want to test endpoints via Postman - you can import [this postman collection](gis-api collection.postman_collection.json)
+
+If you want to test endpoints via Postman - you can import [this Postman collection](./gis-api%20collection.postman_collection.json)
+
 <details>
   <summary>click</summary>
   
